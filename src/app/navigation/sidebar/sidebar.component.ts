@@ -1,0 +1,15 @@
+import { Component, Input } from '@angular/core';
+
+interface SidebarMenuItem {
+  title: string;
+  icon?: string;
+}
+
+@Component({
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
+})
+export class SidebarComponent {
+  @Input('sidebarMenuItems') menuItems: Array<SidebarMenuItem> = [];
+}
