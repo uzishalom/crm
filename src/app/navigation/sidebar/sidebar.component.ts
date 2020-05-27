@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 interface SidebarMenuItem {
   title: string;
   icon?: string;
+  link: string;
 }
 
 @Component({

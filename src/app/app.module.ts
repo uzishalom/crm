@@ -4,9 +4,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NavigationModule } from './navigation/navigation.module';
+import { FirstLetterUperCasePipe } from './pipes/first-letter-uper-case.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ContentHeaderComponent } from './content-header/content-header.component';
+import { CustomersComponent } from './data-components/customers/customers.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    FirstLetterUperCasePipe,
+    PageNotFoundComponent,
+    ContentHeaderComponent,
+    CustomersComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, NavigationModule],
   providers: [],
   bootstrap: [AppComponent],

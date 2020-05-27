@@ -1,8 +1,10 @@
-<ul class="nav flex-column pt-4 bg-info">
-  <li *ngFor="let menuItem of menuItems">
-    <a href="#" class="nav-link text-white">
-      <i [ngClass]="menuItem.icon || 'fas fa-ghost'"></i>
-      <span class="ml-3">{{menuItem.title}}</span>
-    </a>
-  </li>
-</ul>
+<div>
+  <ul class="nav flex-column pt-4 bg-info">
+    <li *ngFor="let menuItem of menuItems">
+      <a [routerLink]="menuItem.link" class="nav-link text-white">
+        <i [ngClass]="menuItem.icon || 'far fa-circle'"></i>
+        <span class="ml-3">{{menuItem.title}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

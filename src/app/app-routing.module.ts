@@ -1,11 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CustomersComponent } from './data-components/customers/customers.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: CustomersComponent },
+  { path: 'customers', component: CustomersComponent },
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent,
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
