@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { sidebarMenuItems } from './sidebar.config';
+import { menuItems, menuDefinitions } from './menubar.config';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,6 @@ import { sidebarMenuItems } from './sidebar.config';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  sidebarMenuItems = sidebarMenuItems;
+  menuItems = menuItems;
+  menuDefinitions = menuDefinitions;
 }

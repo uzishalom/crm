@@ -74,6 +74,36 @@ export class CustomersService {
       email: 'barnettpugh@quizka.com',
       birthday: new Date('2015-01-31T03:35:42'),
     },
+    {
+      id: '5eccd89de030b523ec3fa374',
+      name: 'Barnett Pugh',
+      email: 'barnettpugh@quizka.com',
+      birthday: new Date('2015-01-31T03:35:42'),
+    },
+    {
+      id: '5eccd89de030b523ec3fa374',
+      name: 'Barnett Pugh',
+      email: 'barnettpugh@quizka.com',
+      birthday: new Date('2015-01-31T03:35:42'),
+    },
+    {
+      id: '5eccd89de030b523ec3fa374',
+      name: 'Barnett Pugh',
+      email: 'barnettpugh@quizka.com',
+      birthday: new Date('2015-01-31T03:35:42'),
+    },
+    {
+      id: '5eccd89de030b523ec3fa374',
+      name: 'Barnett Pugh',
+      email: 'barnettpugh@quizka.com',
+      birthday: new Date('2015-01-31T03:35:42'),
+    },
+    {
+      id: '5eccd89de030b523ec3fa374',
+      name: 'Barnett Pugh',
+      email: 'barnettpugh@quizka.com',
+      birthday: new Date('2015-01-31T03:35:42'),
+    },
   ];
 
   getAllCustomers() {

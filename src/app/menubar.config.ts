@@ -1,4 +1,8 @@
-export const sidebarMenuItems = [
+export const menuDefinitions = {
+  menuLocation: 'side', // top/side
+};
+
+export const menuItems = [
   {
     title: 'customers',
     icon: 'fas fa-users',

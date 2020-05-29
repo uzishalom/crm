@@ -1,0 +1,11 @@
+  <div>
+    <ul
+      [ngClass]="{'nav':true, 'flex-row':menuDefinitions.menuLocation != 'side','flex-column':menuDefinitions.menuLocation == 'side', 'bg-info':true}">
+      <li *ngFor="let menuItem of menuItems">
+        <a [routerLink]="menuItem.link" class="nav-link text-white">
+          <i [ngClass]="menuItem.icon || 'far fa-circle'"></i>
+          <span class="ml-3">{{menuItem.title}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>

@@ -1,15 +1,16 @@
 import { Component, Input } from '@angular/core';
+
 import {
   MenubarMenuItem,
   MenuDefinitions,
 } from '../interfaces/menubarInterfaces';
 
 @Component({
-  selector: 'app-mainnavigation',
-  templateUrl: './mainnavigation.component.html',
-  styleUrls: ['./mainnavigation.component.css'],
+  selector: 'app-menubar',
+  templateUrl: './menubar.component.html',
+  styleUrls: ['./menubar.component.css'],
 })
-export class MainnavigationComponent {
+export class MenubarComponent {
   @Input() menuItems: MenubarMenuItem[] = [];
   @Input() menuDefinitions: MenuDefinitions = {};
 }
