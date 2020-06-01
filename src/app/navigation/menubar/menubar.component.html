@@ -1,8 +1,10 @@
   <div>
     <ul
-      [ngClass]="{'nav':true, 'flex-row':menuDefinitions.menuLocation != 'side','flex-column':menuDefinitions.menuLocation == 'side', 'bg-info':true}">
-      <li *ngFor="let menuItem of menuItems">
-        <a [routerLink]="menuItem.link" class="nav-link text-white">
+      [ngClass]="{'nav':true, 'flex-row':menuDefinitions.menuLocation != 'side','flex-column':menuDefinitions.menuLocation == 'side'}"
+      [ngStyle]="{'background-color':menuDefinitions.bgColor || '#5cb85c'}">
+      <li #rla="routerLinkActive" routerLinkActive *ngFor="let menuItem of menuItems">
+        <a [routerLink]="menuItem.link" class="nav-link"
+          [ngStyle]="rla.isActive ? {'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'} : {'color': menuDefinitions.textColor || 'white','background-color':menuDefinitions.bgColor || '#5cb85c'}">
           <i [ngClass]="menuItem.icon || 'far fa-circle'"></i>
           <span class="ml-3">{{menuItem.title}}</span>
         </a>
