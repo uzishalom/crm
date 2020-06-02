@@ -6,7 +6,7 @@
       <div class="col-md-6">
         <label for="id_firstName"><span class="text-danger">* </span>First Name</label>
         <br />
-        <input id="id_firstName" name="firstName" type="text" minlength="4" required class="form-control"
+        <input id="id_firstName" name="firstName" type="text" minlength="2" required class="form-control"
           [(ngModel)]="formData.firstName" #firstNameVar="ngModel" [ngClass]="{
             'is-invalid':
               firstNameVar.invalid &&
@@ -20,7 +20,7 @@
             Please fill first name
           </div>
           <div *ngIf="firstNameVar.errors.minlength">
-            First name must be at least 4 characters
+            First name must be at least {{firstNameVar.errors.minlength.requiredLength}} characters
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div class="col-md-6">
         <label for="id_lastName"><span class="text-danger">* </span>Last Name</label>
         <br />
-        <input id="id_lastName" name="lastName" type="text" minlength="4" required class="form-control"
+        <input id="id_lastName" name="lastName" type="text" minlength="3" required class="form-control"
           [(ngModel)]="formData.lastName" #lastNameVar="ngModel" [ngClass]="{
             'is-invalid':
               lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
@@ -43,7 +43,7 @@
             Please fill last name
           </div>
           <div *ngIf="lastNameVar.errors.minlength">
-            Last name must be at least 4 characters
+            Last name must be at least {{lastNameVar.errors.minlength.requiredLength}} characters
           </div>
         </div>
       </div>
@@ -53,8 +53,9 @@
       <div class="col-md-6">
         <label for="id_email"><span class="text-danger">* </span>Email</label>
         <br />
-        <input id="id_email" name="email" type="email" email required class="form-control" [(ngModel)]="formData.email"
-          #emailVar="ngModel" [ngClass]="{
+        <input id="id_email" name="email" type="email"
+          pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*'')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+          required class="form-control" [(ngModel)]="formData.email" #emailVar="ngModel" [ngClass]="{
             'is-invalid':
               emailVar.invalid && (emailVar.dirty || emailVar.touched)
           }" />
@@ -63,7 +64,7 @@
           <div *ngIf="emailVar.errors.required">
             Please fill email
           </div>
-          <div *ngIf="emailVar.errors.email">
+          <div *ngIf="emailVar.errors.pattern">
             Email is not in correct format
           </div>
         </div>
@@ -74,8 +75,8 @@
       <div class="col-md-6">
         <label for="id_phone"><span class="text-danger">* </span>Phone</label>
         <br />
-        <input id="id_phone" name="phone" type="tel" required class="form-control" [(ngModel)]="formData.phone"
-          #phoneVar="ngModel" [ngClass]="{
+        <input id="id_phone" name="phone" type="tel" required maxlength="20" pattern="[0-9]*" class="form-control"
+          [(ngModel)]="formData.phone" #phoneVar="ngModel" [ngClass]="{
             'is-invalid':
               phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)
           }" />
@@ -83,6 +84,9 @@
         <div *ngIf="phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)" class="invalid-feedback">
           <div *ngIf="phoneVar.errors.required">
             Please fill phone
+          </div>
+          <div *ngIf="phoneVar.errors.pattern">
+            Phone number {{phoneVar.errors.pattern.actualValue}} must have digits only
           </div>
         </div>
       </div>

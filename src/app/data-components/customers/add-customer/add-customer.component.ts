@@ -17,12 +17,7 @@ export class AddCustomerComponent {
   constructor() {}
 
   validate() {
-    return (
-      this.formData.firstName.length >= 4 &&
-      this.formData.lastName.length >= 4 &&
-      this.formData.email.length > 0 &&
-      this.formData.phone.length > 0
-    );
+    return true;
   }
 
   // temp success message
