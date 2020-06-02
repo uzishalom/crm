@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-customer',
@@ -22,5 +23,16 @@ export class AddCustomerComponent {
     if (isDataValid) {
       this.customersService.addCustomer(this.formData);
     }
+  }
+
+  resetForm(form: NgForm) {
+    form.resetForm({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      notes: '',
+    });
   }
 }
