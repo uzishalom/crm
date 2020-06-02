@@ -1,13 +1,13 @@
 <app-content-header title="Add New Customer" icon="fas fa-user-plus"></app-content-header>
 <div class="container ml-0">
-  <form #addCustomerForm="ngForm" (submit)="addCustomer($event)">
+  <form #addCustomerForm="ngForm" (ngSubmit)="addCustomer($event)">
     <div class="row">
       <!-- First Name -->
-      <div class="col-6">
+      <div class="col-md-6">
         <label for="id_firstName"><span class="text-danger">* </span>First Name</label>
         <br />
         <input id="id_firstName" name="firstName" type="text" minlength="4" required class="form-control"
-          [(ngModel)]="firstName" #firstNameVar="ngModel" [ngClass]="{
+          [(ngModel)]="formData.firstName" #firstNameVar="ngModel" [ngClass]="{
             'is-invalid':
               firstNameVar.invalid &&
               (firstNameVar.dirty || firstNameVar.touched)
@@ -15,7 +15,7 @@
         <!-- First Name Validation -->
         <div *ngIf="
             firstNameVar.invalid && (firstNameVar.dirty || firstNameVar.touched)
-          " class="text-danger">
+          " class="invalid-feedback">
           <div *ngIf="firstNameVar.errors.required">
             Please fill first name
           </div>
@@ -27,18 +27,18 @@
 
       <!-- Last Name  -->
 
-      <div class="col-6">
+      <div class="col-md-6">
         <label for="id_lastName"><span class="text-danger">* </span>Last Name</label>
         <br />
         <input id="id_lastName" name="lastName" type="text" minlength="4" required class="form-control"
-          [(ngModel)]="lastName" #lastNameVar="ngModel" [ngClass]="{
+          [(ngModel)]="formData.lastName" #lastNameVar="ngModel" [ngClass]="{
             'is-invalid':
               lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
           }" />
         <!-- Last Name Validation -->
         <div *ngIf="
             lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
-          " class="text-danger">
+          " class="invalid-feedback">
           <div *ngIf="lastNameVar.errors.required">
             Please fill last name
           </div>
@@ -50,16 +50,16 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-6">
+      <div class="col-md-6">
         <label for="id_email"><span class="text-danger">* </span>Email</label>
         <br />
-        <input id="id_email" name="email" type="email" email required class="form-control" [(ngModel)]="email"
+        <input id="id_email" name="email" type="email" email required class="form-control" [(ngModel)]="formData.email"
           #emailVar="ngModel" [ngClass]="{
             'is-invalid':
               emailVar.invalid && (emailVar.dirty || emailVar.touched)
           }" />
         <!-- Email Validation -->
-        <div *ngIf="emailVar.invalid && (emailVar.dirty || emailVar.touched)" class="text-danger">
+        <div *ngIf="emailVar.invalid && (emailVar.dirty || emailVar.touched)" class="invalid-feedback">
           <div *ngIf="emailVar.errors.required">
             Please fill email
           </div>
@@ -71,16 +71,16 @@
 
       <!-- Phone -->
 
-      <div class="col-6">
+      <div class="col-md-6">
         <label for="id_phone"><span class="text-danger">* </span>Phone</label>
         <br />
-        <input id="id_phone" name="phone" type="tel" required class="form-control" [(ngModel)]="phone"
+        <input id="id_phone" name="phone" type="tel" required class="form-control" [(ngModel)]="formData.phone"
           #phoneVar="ngModel" [ngClass]="{
             'is-invalid':
               phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)
           }" />
         <!-- Phone Validation -->
-        <div *ngIf="phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)" class="text-danger">
+        <div *ngIf="phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)" class="invalid-feedback">
           <div *ngIf="phoneVar.errors.required">
             Please fill phone
           </div>
@@ -92,8 +92,8 @@
       <div class="col-12">
         <label for="id_address">Address</label>
         <br />
-        <textarea name="address" id="id_address" class="form-control" cols="2000" rows="2" [(ngModel)]="address"
-          #addressVar="ngModel"></textarea>
+        <textarea name="address" id="id_address" class="form-control" cols="2000" rows="2"
+          [(ngModel)]="formData.address" #addressVar="ngModel"></textarea>
       </div>
     </div>
 
@@ -101,20 +101,20 @@
       <div class="col-12">
         <label for="id_notes">Notes</label>
         <br />
-        <textarea name="notes" id="id_notes" class="form-control" cols="2000" rows="8" [(ngModel)]="notes"
+        <textarea name="notes" id="id_notes" class="form-control" cols="2000" rows="8" [(ngModel)]="formData.notes"
           #notesVar="ngModel"></textarea>
       </div>
     </div>
 
     <div class="row mt-3">
-      <div class="col-4"></div>
-      <div class="col-4">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
         <button class="btn btn-primary" [disabled]="addCustomerForm.invalid">
           Save
         </button>
         <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>
       </div>
-      <div class="col-4"></div>
+      <div class="col-md-4"></div>
     </div>
 
     <!-- temp succeess message -->

@@ -6,20 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-customer.component.css'],
 })
 export class AddCustomerComponent {
-  firstName = '';
-  lastName = '';
-  email = '';
-  phone = '';
-  address = '';
-  notes = '';
+  formData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    notes: '',
+  };
   constructor() {}
 
   validate() {
     return (
-      this.firstName.length >= 4 &&
-      this.lastName.length >= 4 &&
-      this.email.length > 0 &&
-      this.phone.length > 0
+      this.formData.firstName.length >= 4 &&
+      this.formData.lastName.length >= 4 &&
+      this.formData.email.length > 0 &&
+      this.formData.phone.length > 0
     );
   }
 
@@ -30,7 +32,7 @@ export class AddCustomerComponent {
     event.preventDefault();
     event.stopPropagation();
     if (this.validate()) {
-      this.tempSuccess = `*** SUCCESS ${this.firstName} - ${this.lastName} ***`;
+      this.tempSuccess = `*** SUCCESS ${this.formData.firstName} - ${this.formData.lastName} ***`;
     }
   }
 }
