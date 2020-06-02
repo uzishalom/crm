@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Customer } from 'src/app/interfaces/customer';
+import { CustomersService } from 'src/app/services/customers.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-customer.component.css'],
 })
 export class AddCustomerComponent {
-  formData = {
+  formData: Customer = {
     firstName: '',
     lastName: '',
     email: '',
@@ -14,20 +16,11 @@ export class AddCustomerComponent {
     address: '',
     notes: '',
   };
-  constructor() {}
+  constructor(private customersService: CustomersService) {}
 
-  validate() {
-    return true;
-  }
-
-  // temp success message
-  tempSuccess = '';
-
-  addCustomer(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if (this.validate()) {
-      this.tempSuccess = `*** SUCCESS ${this.formData.firstName} - ${this.formData.lastName} ***`;
+  addCustomer(isDataValid: boolean) {
+    if (isDataValid) {
+      this.customersService.addCustomer(this.formData);
     }
   }
 }

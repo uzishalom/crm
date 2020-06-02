@@ -10,4 +10,8 @@ export class CustomersService {
   getAllCustomers() {
     return this.customers;
   }
+
+  addCustomer(customer: Customer) {
+    console.log(customer);
+  }
 }
