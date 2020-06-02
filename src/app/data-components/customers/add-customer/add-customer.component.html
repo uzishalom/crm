@@ -75,8 +75,8 @@
       <div class="col-md-6">
         <label for="id_phone"><span class="text-danger">* </span>Phone</label>
         <br />
-        <input id="id_phone" name="phone" type="tel" required maxlength="20" pattern="[0-9]*" class="form-control"
-          [(ngModel)]="formData.phone" #phoneVar="ngModel" [ngClass]="{
+        <input id="id_phone" name="phone" type="tel" required maxlength="20" pattern="^0[2-9]\d{7,8}$"
+          class="form-control" [(ngModel)]="formData.phone" #phoneVar="ngModel" [ngClass]="{
             'is-invalid':
               phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)
           }" />
@@ -86,7 +86,7 @@
             Please fill phone
           </div>
           <div *ngIf="phoneVar.errors.pattern">
-            Phone number {{phoneVar.errors.pattern.actualValue}} must have digits only
+            Phone number "{{phoneVar.errors.pattern.actualValue}}" is not in the correct format
           </div>
         </div>
       </div>
