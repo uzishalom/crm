@@ -1,0 +1,52 @@
+<app-content-header title="Contacts" icon="fas fa-address-book"></app-content-header>
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-2">Future Search</div>
+  <div class="col-1"></div>
+  <div class="col-2">Future Search</div>
+  <div class="col-1"></div>
+  <div class="col-2">Future Search</div>
+  <div class="col-1"></div>
+  <div class="col-2">Future Search</div>
+</div>
+
+
+<div>
+  <table class="table table-bordered mt-5" *ngIf="contacts.length; else noContacts">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birhday</th>
+        <th>Phones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts; index as i">
+        <td>{{i+1}}</td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td><span *ngIf="contact.birthday; else noBirthday">{{contact.birthday | date:"dd/MM/yyyy"}}</span></td>
+        <td>
+          <ul *ngIf="contact.phones && contact.phones.length;else noPhones">
+            <li *ngFor="let phone of contact.phones">{{phone}}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noContacts>
+  <h2 class="text-danger text-center mt-5">There are no contacts to show</h2>
+</ng-template>
+
+<ng-template #noPhones>
+  <span class="text-danger">No phones</span>
+</ng-template>
+
+<ng-template #noBirthday>
+  <span class="text-danger">Missing birthday</span>
+</ng-template>

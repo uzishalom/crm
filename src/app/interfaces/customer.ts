@@ -1,8 +1,10 @@
 export interface Customer {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  birthday?: Date;
-  phones?: string[];
+  phone: string;
+  address?: string;
+  notes?: string;
   [key: string]: any;
 }

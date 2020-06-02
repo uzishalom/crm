@@ -11,6 +11,7 @@ import { CustomersComponent } from './data-components/customers/customers.compon
 import { MenubarComponent } from './navigation/menubar/menubar.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { AddCustomerComponent } from './data-components/customers/add-customer/add-customer.component';
+import { ContactsComponent } from './data-components/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddCustomerComponent } from './data-components/customers/add-customer/a
     MenubarComponent,
     NavbarComponent,
     AddCustomerComponent,
+    ContactsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
