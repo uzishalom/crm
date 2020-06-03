@@ -10,8 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class CustomersComponent {
   customers: Observable<Customer[]> = new Observable<Customer[]>();
+  customersCount: number = 0;
 
   constructor(customersService: CustomersService) {
     this.customers = customersService.getAll();
+    this.customers.subscribe((data) => {
+      this.customersCount = data.length;
+    });
   }
 }
