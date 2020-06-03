@@ -32,7 +32,7 @@ import { ContactsComponent } from './data-components/contacts/contacts.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
