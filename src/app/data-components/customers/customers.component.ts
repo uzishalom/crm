@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customers',
@@ -8,9 +9,9 @@ import { CustomersService } from 'src/app/services/customers.service';
   styleUrls: ['./customers.component.css'],
 })
 export class CustomersComponent {
-  customers: Customer[] = [];
+  customers: Observable<Customer[]> = new Observable<Customer[]>();
 
   constructor(customersService: CustomersService) {
-    this.customers = customersService.getAllCustomers();
+    this.customers = customersService.getAll();
   }
 }

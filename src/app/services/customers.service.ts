@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../interfaces/customer';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomersService {
-  private customers: Customer[] = [];
+  private customersCollectionRef: AngularFirestoreCollection<Customer> = null;
 
-  getAllCustomers() {
-    return this.customers;
+  constructor(dbRef: AngularFirestore) {
+    this.customersCollectionRef = dbRef.collection('customers');
   }
 
-  addCustomer(customer: Customer) {
-    console.log(customer);
+  getAll(): Observable<Customer[]> {
+    return this.customersCollectionRef.valueChanges({ idField: 'id' });
+  }
+
+  add(customer: Customer) {
+    return this.customersCollectionRef.add(customer);
   }
 }

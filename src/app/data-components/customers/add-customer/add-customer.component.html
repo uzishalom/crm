@@ -1,6 +1,6 @@
 <app-content-header title="Add New Customer" icon="fas fa-user-plus"></app-content-header>
 <div class="container ml-0">
-  <form #addCustomerForm="ngForm" (ngSubmit)="addCustomer($event)">
+  <form #addCustomerForm="ngForm">
     <div class="row">
       <!-- First Name -->
       <div class="col-md-6">
@@ -111,9 +111,11 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-md-4"></div>
       <div class="col-md-4">
-        <button class="btn btn-primary" [disabled]="addCustomerForm.invalid">
+        <div class="text-danger" [hidden]="!errorInSaving">There was an error in adding the customer</div>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary" [disabled]="addCustomerForm.invalid" (click)="addCustomer($event)">
           Save
         </button>
         <button class="btn btn-secondary ml-2" (click)="resetForm(addCustomerForm)">

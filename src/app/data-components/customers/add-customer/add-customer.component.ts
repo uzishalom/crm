@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-customer',
@@ -17,11 +19,24 @@ export class AddCustomerComponent {
     address: '',
     notes: '',
   };
-  constructor(private customersService: CustomersService) {}
+
+  errorInSaving = false;
+
+  constructor(
+    private customersService: CustomersService,
+    private router: Router
+  ) {}
 
   addCustomer(isDataValid: boolean) {
     if (isDataValid) {
-      this.customersService.addCustomer(this.formData);
+      this.errorInSaving = false;
+      this.customersService
+        .add(this.formData)
+        .then(() => this.router.navigateByUrl('/customers'))
+        .catch((error) => {
+          console.log(error);
+          this.errorInSaving = true;
+        });
     }
   }
 
@@ -34,5 +49,6 @@ export class AddCustomerComponent {
       address: '',
       notes: '',
     });
+    this.errorInSaving = false;
   }
 }
