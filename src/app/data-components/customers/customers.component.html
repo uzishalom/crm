@@ -15,8 +15,8 @@
 </div>
 
 
-<div>
-  <table class="table table-bordered mt-5" *ngIf="customersCount;else noCustomers">
+<div *ngIf="customers | async as customersAsync;else loading">
+  <table class="table table-bordered mt-5" *ngIf="customersAsync.length;else noCustomers">
     <thead>
       <tr>
         <th>Customer Name</th>
@@ -27,7 +27,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let customer of customers|async">
+      <tr *ngFor="let customer of customersAsync">
         <td><a href="#">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a></td>
         <td><a href="#">{{customer.email}}</a></td>
         <td>{{customer.phone}}</td>
@@ -37,9 +37,17 @@
   </table>
 
   <ng-template #noCustomers>
-    <div class="mt-5">
-      <h2 class="text-info text-center mt-5">There are no customers to show</h2>
-    </div>
+    <h2 class="text-info text-center mt-5">There are no customers to show</h2>
   </ng-template>
 
 </div>
+
+
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fas fa-spinner"></i>
+  </div>
+  <div class="mt-5 text-center">
+    Loading please wait ....
+  </div>
+</ng-template>
