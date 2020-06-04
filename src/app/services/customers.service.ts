@@ -23,4 +23,8 @@ export class CustomersService {
   add(customer: Customer) {
     return this.customersCollectionRef.add(customer);
   }
+
+  remove(id: string) {
+    return this.customersCollectionRef.doc(id).delete();
+  }
 }

@@ -31,7 +31,8 @@
         <td><a href="#">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a></td>
         <td><a href="#">{{customer.email}}</a></td>
         <td>{{customer.phone}}</td>
-        <td><a href="#">Remove</a></td>
+        <td><a href="#" (click)="deleteCustomer(customer.id,customer.firstName + ' '  + customer.lastName)">Remove</a>
+        </td>
       </tr>
     </tbody>
   </table>
