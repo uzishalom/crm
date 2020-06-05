@@ -27,4 +27,8 @@ export class CustomersService {
   remove(id: string) {
     return this.customersCollectionRef.doc(id).delete();
   }
+
+  getById(id: string) {
+    return this.customersCollectionRef.doc(id).get().toPromise();
+  }
 }

@@ -28,7 +28,9 @@
 
     <tbody>
       <tr *ngFor="let customer of customersAsync">
-        <td><a href="#">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a></td>
+        <td><a href="#"
+            [routerLink]="['/customers',customer.id]">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a>
+        </td>
         <td><a href="#">{{customer.email}}</a></td>
         <td>{{customer.phone}}</td>
         <td><a href="#" (click)="deleteCustomer(customer.id,customer.firstName + ' '  + customer.lastName)">Remove</a>
