@@ -20,15 +20,19 @@ export class CustomersService {
     return this.customersCollectionRef.valueChanges({ idField: 'id' });
   }
 
+  getById(id: string) {
+    return this.customersCollectionRef.doc(id).get().toPromise();
+  }
+
   add(customer: Customer) {
     return this.customersCollectionRef.add(customer);
   }
 
-  remove(id: string) {
-    return this.customersCollectionRef.doc(id).delete();
+  update(id: string, customer: Customer) {
+    return this.customersCollectionRef.doc(id).update(customer);
   }
 
-  getById(id: string) {
-    return this.customersCollectionRef.doc(id).get().toPromise();
+  remove(id: string) {
+    return this.customersCollectionRef.doc(id).delete();
   }
 }

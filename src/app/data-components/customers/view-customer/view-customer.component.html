@@ -1,2 +1,23 @@
-<app-content-header [title]="((customer.firstName + ' ' + customer.lastName) |titlecase) + ' Details'"
-  icon="fas fa-user-alt"></app-content-header>
+<app-content-header title="Customer Details" icon="fas fa-user-alt"></app-content-header>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      {{((customer.firstName + ' ' + customer.lastName) |titlecase)}}
+      <div class="float-right">
+        <a href="#" [routerLink]="['/customers',customerId,'update']"><i class="far fa-edit"></i></a>
+      </div>
+    </div>
+    <div class="card-body row">
+      <div class="col-6">
+        <p class="card-text">Email: <a href="#">{{customer.email}}</a></p>
+        <p class="card-text">Address: {{customer.address}}</p>
+        <p class="card-text">Notes: <br> {{customer.notes}}</p>
+        <a href="#" routerlink="/customers" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
+      </div>
+      <div class="col-6 border">
+        <!-- <app-map></app-map> -->
+      </div>
+    </div>
+  </div>
+</div>

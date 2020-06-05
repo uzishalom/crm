@@ -6,11 +6,11 @@ import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
 
 @Component({
-  selector: 'app-view-customer',
-  templateUrl: './view-customer.component.html',
-  styleUrls: ['./view-customer.component.css'],
+  selector: 'app-update-customer',
+  templateUrl: './update-customer.component.html',
+  styleUrls: ['./update-customer.component.css'],
 })
-export class ViewCustomerComponent implements OnInit, OnDestroy {
+export class UpdateCustomerComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   customerId: string;
@@ -22,6 +22,10 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
     address: '',
     notes: '',
   };
+
+  errorInSaving: boolean = false;
+
+  customerInitialFullName: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +41,7 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
         .then((doc) => {
           if (doc.exists) {
             this.customer = doc.data() as Customer;
+            this.customerInitialFullName = `${this.customer.firstName} ${this.customer.lastName}`;
           } else {
             console.log('Customer Not Found');
             this.router.navigateByUrl('/page-not-found');
@@ -51,5 +56,18 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  updateCustomer(isDataValid: boolean) {
+    if (isDataValid) {
+      this.errorInSaving = false;
+      this.customersService
+        .update(this.customerId, this.customer)
+        .then(() => this.router.navigate(['/customers', this.customerId]))
+        .catch((error) => {
+          console.log(error);
+          this.errorInSaving = true;
+        });
+    }
   }
 }

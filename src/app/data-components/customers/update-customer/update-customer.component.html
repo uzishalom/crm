@@ -1,0 +1,131 @@
+<app-content-header [title]="'Update ' + (customerInitialFullName | titlecase) " icon="fas fa-user-edit">
+</app-content-header>
+
+<div class="container ml-0">
+  <form #updateCustomerForm="ngForm">
+    <div class="row">
+      <!-- First Name -->
+      <div class="col-md-6">
+        <label for="id_firstName"><span class="text-danger">* </span>First Name</label>
+        <br />
+        <input id="id_firstName" name="firstName" type="text" minlength="2" required class="form-control"
+          [(ngModel)]="customer.firstName" #firstNameVar="ngModel" [ngClass]="{
+            'is-invalid':
+              firstNameVar.invalid &&
+              (firstNameVar.dirty || firstNameVar.touched)
+          }" />
+        <!-- First Name Validation -->
+        <div *ngIf="
+            firstNameVar.invalid && (firstNameVar.dirty || firstNameVar.touched)
+          " class="invalid-feedback">
+          <div *ngIf="firstNameVar.errors.required">
+            Please fill first name
+          </div>
+          <div *ngIf="firstNameVar.errors.minlength">
+            First name must be at least {{firstNameVar.errors.minlength.requiredLength}} characters
+          </div>
+        </div>
+      </div>
+
+      <!-- Last Name  -->
+
+      <div class="col-md-6">
+        <label for="id_lastName"><span class="text-danger">* </span>Last Name</label>
+        <br />
+        <input id="id_lastName" name="lastName" type="text" minlength="3" required class="form-control"
+          [(ngModel)]="customer.lastName" #lastNameVar="ngModel" [ngClass]="{
+            'is-invalid':
+              lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
+          }" />
+        <!-- Last Name Validation -->
+        <div *ngIf="
+            lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
+          " class="invalid-feedback">
+          <div *ngIf="lastNameVar.errors.required">
+            Please fill last name
+          </div>
+          <div *ngIf="lastNameVar.errors.minlength">
+            Last name must be at least {{lastNameVar.errors.minlength.requiredLength}} characters
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="id_email"><span class="text-danger">* </span>Email</label>
+        <br />
+        <input id="id_email" name="email" type="email"
+          pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*'')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+          required class="form-control" [(ngModel)]="customer.email" #emailVar="ngModel" [ngClass]="{
+            'is-invalid':
+              emailVar.invalid && (emailVar.dirty || emailVar.touched)
+          }" />
+        <!-- Email Validation -->
+        <div *ngIf="emailVar.invalid && (emailVar.dirty || emailVar.touched)" class="invalid-feedback">
+          <div *ngIf="emailVar.errors.required">
+            Please fill email
+          </div>
+          <div *ngIf="emailVar.errors.pattern">
+            Email is not in correct format
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone -->
+
+      <div class="col-md-6">
+        <label for="id_phone"><span class="text-danger">* </span>Phone</label>
+        <br />
+        <input id="id_phone" name="phone" type="tel" required maxlength="20" pattern="^0[2-9]\d{7,8}$"
+          class="form-control" [(ngModel)]="customer.phone" #phoneVar="ngModel" [ngClass]="{
+            'is-invalid':
+              phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)
+          }" />
+        <!-- Phone Validation -->
+        <div *ngIf="phoneVar.invalid && (phoneVar.dirty || phoneVar.touched)" class="invalid-feedback">
+          <div *ngIf="phoneVar.errors.required">
+            Please fill phone
+          </div>
+          <div *ngIf="phoneVar.errors.pattern">
+            Phone number "{{phoneVar.errors.pattern.actualValue}}" is not in the correct format
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <label for="id_address">Address</label>
+        <br />
+        <textarea name="address" id="id_address" class="form-control" cols="2000" rows="2"
+          [(ngModel)]="customer.address" #addressVar="ngModel"></textarea>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <label for="id_notes">Notes</label>
+        <br />
+        <textarea name="notes" id="id_notes" class="form-control" cols="2000" rows="8" [(ngModel)]="customer.notes"
+          #notesVar="ngModel"></textarea>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="text-danger" [hidden]="!errorInSaving">There was an error in updating
+          {{this.customerInitialFullName | titlecase}} details</div>
+      </div>
+
+      <div class="col-md-4">
+        <button class="btn btn-primary" [disabled]="updateCustomerForm.invalid" (click)="updateCustomer($event)">
+          Save
+        </button>
+        <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+  </form>
+</div>

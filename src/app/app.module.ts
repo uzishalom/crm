@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+import { AgmCoreModule } from '@agm/core';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstLetterUperCasePipe } from './pipes/first-letter-uper-case.pipe';
@@ -17,6 +18,8 @@ import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { AddCustomerComponent } from './data-components/customers/add-customer/add-customer.component';
 import { ContactsComponent } from './data-components/contacts/contacts.component';
 import { ViewCustomerComponent } from './data-components/customers/view-customer/view-customer.component';
+import { MapComponent } from './map/map.component';
+import { UpdateCustomerComponent } from './data-components/customers/update-customer/update-customer.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { ViewCustomerComponent } from './data-components/customers/view-customer
     AddCustomerComponent,
     ContactsComponent,
     ViewCustomerComponent,
+    MapComponent,
+    UpdateCustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,9 @@ import { ViewCustomerComponent } from './data-components/customers/view-customer
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsApiKey,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
