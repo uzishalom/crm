@@ -12,11 +12,13 @@
       <div class="col-6">
         <p class="card-text">Email: <a href="#">{{customer.email}}</a></p>
         <p class="card-text">Address: {{customer.address}}</p>
-        <p class="card-text">Notes: <br> {{customer.notes}}</p>
         <a href="#" routerlink="/customers" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
       </div>
       <div class="col-6 border">
-        <!-- <app-map></app-map> -->
+        <p class="card-text"><u>Notes:</u><br> {{customer.notes}}</p>
+      </div>
+      <div class="col-12 mt-5">
+        <app-map></app-map>
       </div>
     </div>
   </div>
