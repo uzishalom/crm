@@ -1,1 +1,8 @@
-<agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+<div class="text-center mb-1">
+  {{addressToShow}} <br>
+</div>
+<div>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>>
+  </agm-map>
+</div>

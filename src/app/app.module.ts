@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,7 @@ import { UpdateCustomerComponent } from './data-components/customers/update-cust
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -45,6 +47,7 @@ import { UpdateCustomerComponent } from './data-components/customers/update-cust
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey,
+      libraries: ['places'],
     }),
   ],
   providers: [],

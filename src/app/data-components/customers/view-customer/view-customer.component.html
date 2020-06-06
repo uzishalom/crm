@@ -17,8 +17,8 @@
       <div class="col-6 border">
         <p class="card-text"><u>Notes:</u><br> {{customer.notes}}</p>
       </div>
-      <div class="col-12 mt-5">
-        <app-map></app-map>
+      <div class="col-12 mt-5" *ngIf="customer.address">
+        <app-map [address]="customer.address"></app-map>
       </div>
     </div>
   </div>
