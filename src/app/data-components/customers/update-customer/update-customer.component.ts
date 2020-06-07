@@ -4,16 +4,18 @@ import { Router } from '@angular/router';
 import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
 import { switchMap, take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-update-customer',
   templateUrl: './update-customer.component.html',
   styleUrls: ['./update-customer.component.css'],
 })
-export class UpdateCustomerComponent implements OnInit {
+export class UpdateCustomerComponent implements OnInit, OnDestroy {
   customer: Customer;
   errorInSaving: boolean = false;
   customerInitialFullName: string = '';
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +24,7 @@ export class UpdateCustomerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
+    this.subscription = this.route.params
       .pipe(
         switchMap((params) => this.customersService.getById(params.id)),
         take(1)
@@ -32,6 +34,10 @@ export class UpdateCustomerComponent implements OnInit {
         this.customerInitialFullName =
           this.customer.firstName + ' ' + this.customer.lastName;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   updateCustomer(isDataValid: boolean) {
