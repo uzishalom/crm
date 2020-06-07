@@ -21,11 +21,14 @@ export class MapComponent implements AfterViewChecked {
   lng: number = 0;
   zoom: number = 15;
   addressToShow: string = '';
+  mapLoaded = false;
 
   constructor(private http: HttpClient) {}
 
   ngAfterViewChecked(): void {
-    this.showMap();
+    if (!this.mapLoaded) {
+      this.showMap();
+    }
   }
 
   showMap() {
@@ -41,6 +44,9 @@ export class MapComponent implements AfterViewChecked {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        this.mapLoaded = true;
       });
   }
 }
