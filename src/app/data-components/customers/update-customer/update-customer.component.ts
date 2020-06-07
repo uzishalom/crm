@@ -37,7 +37,7 @@ export class UpdateCustomerComponent implements OnInit, OnDestroy {
     this.subscription = this.route.params.subscribe((params) => {
       this.customerId = params?.id;
       this.customersService
-        .getById(this.customerId)
+        .getByIdOLD(this.customerId)
         .then((doc) => {
           if (doc.exists) {
             this.customer = doc.data() as Customer;

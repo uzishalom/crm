@@ -1,25 +1,41 @@
 <app-content-header title="Customer Details" icon="fas fa-user-alt"></app-content-header>
-
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      {{((customer.firstName + ' ' + customer.lastName) |titlecase)}}
-      <div class="float-right">
-        <a href="#" [routerLink]="['/customers',customerId,'update']"><i class="far fa-edit"></i></a>
+<div *ngIf="customerObs | async as customer; else loading">
+  <div class="container" *ngIf="customer.id; else noCustomer">
+    <div class="card">
+      <div class="card-header">
+        {{((customer.firstName + ' ' + customer.lastName) |titlecase)}}
+        <div class="float-right">
+          <a href="#" [routerLink]="['/customers',customer.id,'update']"><i class="far fa-edit"></i></a>
+        </div>
       </div>
-    </div>
-    <div class="card-body row">
-      <div class="col-6">
-        <p class="card-text">Email: <a href="#">{{customer.email}}</a></p>
-        <p class="card-text">Address: {{customer.address}}</p>
-        <a href="#" routerlink="/customers" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
-      </div>
-      <div class="col-6 border">
-        <p class="card-text"><u>Notes:</u><br> {{customer.notes}}</p>
-      </div>
-      <div class="col-12 mt-5" *ngIf="customer.address">
-        <app-map [address]="customer.address"></app-map>
+      <div class="card-body row">
+        <div class="col-6">
+          <p class="card-text">Email: <a href="#">{{customer.email}}</a></p>
+          <p class="card-text">Address: {{customer.address}}</p>
+          <a href="#" routerlink="/customers" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
+        </div>
+        <div class="col-6 border">
+          <p class="card-text"><u>Notes:</u><br> {{customer.notes}}</p>
+        </div>
+        <div class="col-12 mt-5" *ngIf="customer.address">
+          <app-map [address]="customer.address"></app-map>
+        </div>
       </div>
     </div>
   </div>
+
+  <ng-template #noCustomer>
+    <h1 class="text-danger text-center mt-5">The customer doesn't exists</h1>
+  </ng-template>
+
 </div>
+
+
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fas fa-spinner"></i>
+  </div>
+  <div class="mt-5 text-center">
+    Loading please wait ....
+  </div>
+</ng-template>

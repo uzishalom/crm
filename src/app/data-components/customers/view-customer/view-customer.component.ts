@@ -1,55 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Customer } from 'src/app/interfaces/customer';
 import { CustomersService } from 'src/app/services/customers.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view-customer',
   templateUrl: './view-customer.component.html',
   styleUrls: ['./view-customer.component.css'],
 })
-export class ViewCustomerComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
-
-  customerId: string;
-  customer: Customer = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    notes: '',
-  };
+export class ViewCustomerComponent implements OnInit {
+  customerObs: Observable<Customer>;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private customersService: CustomersService
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe((params) => {
-      this.customerId = params?.id;
-      this.customersService
-        .getById(this.customerId)
-        .then((doc) => {
-          if (doc.exists) {
-            this.customer = doc.data() as Customer;
-          } else {
-            console.log('Customer Not Found');
-            this.router.navigateByUrl('/page-not-found');
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          this.router.navigateByUrl('/page-not-found');
-        });
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.customerObs = this.route.params.pipe(
+      switchMap((params) => this.customersService.getById(params.id))
+    );
   }
 }

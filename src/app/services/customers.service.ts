@@ -5,6 +5,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,29 @@ export class CustomersService {
     return this.customersCollectionRef.valueChanges({ idField: 'id' });
   }
 
-  getById(id: string) {
+  getByIdOLD(id: string) {
     return this.customersCollectionRef.doc(id).get().toPromise();
+  }
+
+  getById(id: string) {
+    return this.customersCollectionRef
+      .doc<Customer>(id)
+      .valueChanges()
+      .pipe(
+        map((doc) => {
+          if (doc) {
+            return { id: id, ...doc };
+          } else {
+            return {
+              id: '',
+              firstName: '',
+              lastName: '',
+              email: '',
+              phone: '',
+            };
+          }
+        })
+      );
   }
 
   add(customer: Customer) {
