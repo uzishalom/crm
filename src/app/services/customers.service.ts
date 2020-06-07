@@ -21,10 +21,6 @@ export class CustomersService {
     return this.customersCollectionRef.valueChanges({ idField: 'id' });
   }
 
-  getByIdOLD(id: string) {
-    return this.customersCollectionRef.doc(id).get().toPromise();
-  }
-
   getById(id: string) {
     return this.customersCollectionRef
       .doc<Customer>(id)
