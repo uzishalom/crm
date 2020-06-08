@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 export class CustomersComponent {
   customers: Observable<Customer[]>;
 
+  nameFilter: string;
+  emailFilter: string;
+
   constructor(private customersService: CustomersService) {
     this.customers = customersService.getAll();
   }

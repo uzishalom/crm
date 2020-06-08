@@ -21,6 +21,8 @@ import { ContactsComponent } from './data-components/contacts/contacts.component
 import { ViewCustomerComponent } from './data-components/customers/view-customer/view-customer.component';
 import { MapComponent } from './map/map.component';
 import { UpdateCustomerComponent } from './data-components/customers/update-customer/update-customer.component';
+import { DataFilterPipe } from './pipes/data-filter.pipe';
+import { DataFilterTwoFieldsOrPipe } from './pipes/data-filter-two-fields-or.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { UpdateCustomerComponent } from './data-components/customers/update-cust
     ViewCustomerComponent,
     MapComponent,
     UpdateCustomerComponent,
+    DataFilterPipe,
+    DataFilterTwoFieldsOrPipe,
   ],
   imports: [
     BrowserModule,
