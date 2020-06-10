@@ -1,0 +1,85 @@
+<div class="container center">
+  <div class="">
+    <h1 class="text-center text-info ">Uzi CRM</h1>
+  </div>
+  <div class="">
+    <form #loginForm="ngForm">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <!-- Email -->
+          <label for="id_email"><span class="text-danger">* </span>Email</label>
+          <br />
+          <input id="id_email" name="email" type="email" auto-complete="username" class="form-control"
+            [(ngModel)]="form.email" />
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+
+        <!-- Password -->
+        <div class="col-3"></div>
+        <div class="col-6">
+          <label for="id_password"><span class="text-danger">* </span>Password</label>
+          <br />
+          <input id="id_password" name="password" type="password" auto-complete="current-password" class="form-control"
+            [(ngModel)]="form.password">
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+        <!-- Login with Email and Password -->
+        <div class="col-3"></div>
+        <div class="col-6">
+          <button class="btn btn-primary container-fluid" [disabled]="!(form.email && form.password)"
+            (click)="emailAndPasswordLogin($event)">Login</button>
+          <br>
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+        <!-- Login with Google -->
+        <div class="col-3"></div>
+        <div class="col-6">
+          <button class="btn btn-primary container-fluid" appLoginGoogle>Login with Google</button>
+          <br>
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+        <!-- Sign Up -->
+        <div class="col-3"></div>
+        <div class="col-6">
+          <button class="btn btn-primary container-fluid">Sign Up</button>
+          <br>
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+        <!-- Error Message -->
+        <div class="col-3"></div>
+        <div class="col-6">
+          <span class="text-danger" *ngIf="errorInLogin">{{errorMessage}}</span>
+          <br>
+          <br>
+        </div>
+        <div class="col-3"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </form>
+  </div>
+</div>

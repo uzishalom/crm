@@ -23,6 +23,11 @@ import { MapComponent } from './map/map.component';
 import { UpdateCustomerComponent } from './data-components/customers/update-customer/update-customer.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { DataFilterTwoFieldsOrPipe } from './pipes/data-filter-two-fields-or.pipe';
+import { LoadingComponent } from './loading/loading.component';
+import { LoginComponent } from './login/login.component';
+import { LoginGoogleDirective } from './directives/loginGoogle.directive';
+import { LogoutDirective } from './directives/logout.directive';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,11 @@ import { DataFilterTwoFieldsOrPipe } from './pipes/data-filter-two-fields-or.pip
     UpdateCustomerComponent,
     DataFilterPipe,
     DataFilterTwoFieldsOrPipe,
+    LoadingComponent,
+    LoginComponent,
+    LoginGoogleDirective,
+    LogoutDirective,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
