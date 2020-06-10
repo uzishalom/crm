@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import {} from '../directives/loginGoogle.directive';
+import { AuthService } from '../../services/auth.service';
+import {} from '../../directives/loginGoogle.directive';
 
 @Component({
   selector: 'app-login',

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CustomersComponent } from './data-components/customers/customers.component';
-import { AddCustomerComponent } from './data-components/customers/add-customer/add-customer.component';
-import { ContactsComponent } from './data-components/contacts/contacts.component';
-import { ViewCustomerComponent } from './data-components/customers/view-customer/view-customer.component';
-import { UpdateCustomerComponent } from './data-components/customers/update-customer/update-customer.component';
+import { PageNotFoundComponent } from './components-general/page-not-found/page-not-found.component';
+import { CustomersComponent } from './components-data/customers/customers.component';
+import { AddCustomerComponent } from './components-data/customers/add-customer/add-customer.component';
+import { ContactsComponent } from './components-data/contacts/contacts.component';
+import { ViewCustomerComponent } from './components-data/customers/view-customer/view-customer.component';
+import { UpdateCustomerComponent } from './components-data/customers/update-customer/update-customer.component';
 
 const routes: Routes = [
   { path: '', component: CustomersComponent },

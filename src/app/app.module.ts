@@ -11,23 +11,23 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstLetterUperCasePipe } from './pipes/first-letter-uper-case.pipe';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ContentHeaderComponent } from './content-header/content-header.component';
-import { CustomersComponent } from './data-components/customers/customers.component';
+import { PageNotFoundComponent } from './components-general/page-not-found/page-not-found.component';
+import { ContentHeaderComponent } from './components-utils/content-header/content-header.component';
+import { CustomersComponent } from './components-data/customers/customers.component';
 import { MenubarComponent } from './navigation/menubar/menubar.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
-import { AddCustomerComponent } from './data-components/customers/add-customer/add-customer.component';
-import { ContactsComponent } from './data-components/contacts/contacts.component';
-import { ViewCustomerComponent } from './data-components/customers/view-customer/view-customer.component';
-import { MapComponent } from './map/map.component';
-import { UpdateCustomerComponent } from './data-components/customers/update-customer/update-customer.component';
+import { AddCustomerComponent } from './components-data/customers/add-customer/add-customer.component';
+import { ContactsComponent } from './components-data/contacts/contacts.component';
+import { ViewCustomerComponent } from './components-data/customers/view-customer/view-customer.component';
+import { MapComponent } from './components-utils/map/map.component';
+import { UpdateCustomerComponent } from './components-data/customers/update-customer/update-customer.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { DataFilterTwoFieldsOrPipe } from './pipes/data-filter-two-fields-or.pipe';
-import { LoadingComponent } from './loading/loading.component';
-import { LoginComponent } from './login/login.component';
+import { LoadingComponent } from './components-utils/loading/loading.component';
+import { LoginComponent } from './components-general/login/login.component';
 import { LoginGoogleDirective } from './directives/loginGoogle.directive';
 import { LogoutDirective } from './directives/logout.directive';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './components-general/signup/signup.component';
 
 @NgModule({
   declarations: [
