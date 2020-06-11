@@ -28,6 +28,7 @@ import { LoginComponent } from './components-general/login/login.component';
 import { LoginGoogleDirective } from './directives/loginGoogle.directive';
 import { LogoutDirective } from './directives/logout.directive';
 import { SignupComponent } from './components-general/signup/signup.component';
+import { UnloggedUserNavigatorComponent } from './components-general/unlogged-user-navigator/unlogged-user-navigator.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SignupComponent } from './components-general/signup/signup.component';
     LoginGoogleDirective,
     LogoutDirective,
     SignupComponent,
+    UnloggedUserNavigatorComponent,
   ],
   imports: [
     BrowserModule,

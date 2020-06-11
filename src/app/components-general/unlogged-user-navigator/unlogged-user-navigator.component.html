@@ -1,0 +1,2 @@
+<app-login *ngIf="currentShownComponent == 'login'" (signUpClicked)="onSignupClicked()"></app-login>
+<app-signup *ngIf="currentShownComponent == 'signup'" (backToLoginClicked)="onBackToLoginClicked()"></app-signup>

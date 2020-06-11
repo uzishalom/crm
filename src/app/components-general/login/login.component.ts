@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {} from '../../directives/loginGoogle.directive';
 
@@ -8,6 +8,8 @@ import {} from '../../directives/loginGoogle.directive';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  @Output() signUpClicked = new EventEmitter();
+
   form = { email: '', password: '' };
   errorInLogin: boolean = false;
   errorMessage: string = '';
@@ -20,13 +22,16 @@ export class LoginComponent {
     this.errorInLogin = false;
     this.authService
       .emailPasswordLogin(this.form.email, this.form.password)
-      .then((user) => {
-        console.log('dddddd');
-      })
       .catch((err) => {
         console.log(err);
         this.errorInLogin = true;
         this.errorMessage = err.message;
       });
+  }
+
+  onSignUpClicked(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.signUpClicked.emit();
   }
 }
