@@ -1,4 +1,5 @@
-  <div>
+  <!-- Menu for large screens -->
+  <div class="d-lg-block d-none">
     <ul
       [ngClass]="{'nav':true, 'flex-row':menuDefinitions.menuLocation != 'side','flex-column':menuDefinitions.menuLocation == 'side'}"
       [ngStyle]="{'background-color':menuDefinitions.bgColor || '#5cb85c'}">
@@ -10,4 +11,38 @@
         </a>
       </li>
     </ul>
+  </div>
+
+
+  <!-- Menu for small screens (mobile, tablet) -->
+
+  <div class="d-lg-none p-0 m-0" id="id_small-menu">
+    <button class="navbar-toggler toggler-example border" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
+      aria-label="Toggle navigation"><span
+        [ngStyle]="{'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'}"><i
+          class="fas fa-bars fa-1x"></i></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+      <ul class="navbar-nav mr-auto">
+
+        <li #rla="routerLinkActive" routerLinkActive *ngFor="let menuItem of menuItems">
+          <a [routerLink]="menuItem.link" class="nav-link pl-2"
+            [ngStyle]="rla.isActive ? {'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'} : {'color': menuDefinitions.textColor || 'white','background-color':menuDefinitions.bgColor || '#5cb85c'}">
+            <i [ngClass]="menuItem.icon || 'far fa-circle'"></i>
+            <span class="ml-3">{{menuItem.title}}</span>
+          </a>
+        </li>
+        <!-- Logout -->
+        <li #rla="routerLinkActive" routerLinkActive>
+          <a appLogout class="nav-link pl-2"
+            [ngStyle]="rla.isActive ? {'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'} : {'color': menuDefinitions.textColor || 'white','background-color':menuDefinitions.bgColor || '#5cb85c'}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="ml-3">Sign Out</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
   </div>

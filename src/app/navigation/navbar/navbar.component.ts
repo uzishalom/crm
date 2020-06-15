@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { LogoutDirective } from '../../directives/logout.directive';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +7,5 @@ import { LogoutDirective } from '../../directives/logout.directive';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) { }
 }
