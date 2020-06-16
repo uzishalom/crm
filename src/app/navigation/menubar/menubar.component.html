@@ -16,7 +16,7 @@
 
   <!-- Menu for small screens (mobile, tablet) -->
 
-  <div class="d-lg-none p-0 m-0" id="id_small-menu">
+  <div class="d-lg-none p-0 m-0 position-fixed" id="id_small-menu">
     <button class="navbar-toggler toggler-example border" type="button" data-toggle="collapse"
       data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
       aria-label="Toggle navigation"><span
@@ -28,14 +28,14 @@
       <ul class="navbar-nav mr-auto">
 
         <li #rla="routerLinkActive" routerLinkActive *ngFor="let menuItem of menuItems">
-          <a [routerLink]="menuItem.link" class="nav-link pl-2"
+          <a [routerLink]="menuItem.link" class="nav-link pl-2" data-toggle="collapse" data-target=".navbar-collapse"
             [ngStyle]="rla.isActive ? {'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'} : {'color': menuDefinitions.textColor || 'white','background-color':menuDefinitions.bgColor || '#5cb85c'}">
             <i [ngClass]="menuItem.icon || 'far fa-circle'"></i>
             <span class="ml-3">{{menuItem.title}}</span>
           </a>
         </li>
         <!-- Logout -->
-        <li #rla="routerLinkActive" routerLinkActive>
+        <li id="id_logout" #rla="routerLinkActive" routerLinkActive>
           <a appLogout class="nav-link pl-2"
             [ngStyle]="rla.isActive ? {'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'} : {'color': menuDefinitions.textColor || 'white','background-color':menuDefinitions.bgColor || '#5cb85c'}">
             <i class="fas fa-sign-out-alt"></i>

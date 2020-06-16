@@ -3,7 +3,7 @@
   <div class="container-fluid" *ngIf="afa.isLogged; else login">
 
     <header>
-      <app-navbar></app-navbar>
+      <app-navbar [menuDefinitions]="menuDefinitions"></app-navbar>
     </header>
 
     <main

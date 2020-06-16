@@ -1,5 +1,6 @@
-<div class="d-none d-lg-block">
-  <nav class="navbar navbar-expand-md text-info navbar-fixed-top">
+<div class="d-none d-lg-block border-bottom"
+  [ngStyle]="{'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'}">
+  <nav class="navbar navbar-expand-md navbar-fixed-top">
 
     <span class="navbar-brand">CRM</span>
 
@@ -20,4 +21,9 @@
       </ul>
     </div>
   </nav>
+</div>
+
+<div class="container d-lg-none d-block text-center border-bottom"
+  [ngStyle]="{'color': menuDefinitions.selectedTextColor || '#5cb85c', 'background-color':menuDefinitions.selectedBgColor || 'white'}">
+  <span class="navbar-brand">CRM</span>
 </div>
