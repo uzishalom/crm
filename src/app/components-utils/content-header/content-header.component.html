@@ -1,9 +1,16 @@
-<div class="row mt-1">
-  <div class="col-12">
-    <div class="jumbotron pt-3 pb-3">
-      <h4> <i [ngClass]="iconClass"></i>
-        {{" " + pageTitle}}
-      </h4>
+<div class="d-none d-lg-block">
+  <div class="row mt-1">
+    <div class="col-12">
+      <div class="jumbotron pt-3 pb-3">
+        <h4> <i [ngClass]="iconClass"></i>
+          {{" " + pageTitle}}
+        </h4>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="d-block d-lg-none text-center">
+  <h5><u>{{pageTitle}}</u>
+  </h5>
 </div>
