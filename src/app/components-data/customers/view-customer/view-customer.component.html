@@ -2,20 +2,18 @@
 <div *ngIf="customerObs | async as customer; else loading">
   <div class="container" *ngIf="customer.id; else noCustomer">
     <div class="card">
-      <div class="card-header">
-        {{((customer.firstName + ' ' + customer.lastName) |titlecase)}}
-        <div class="float-right">
-          <a href="#" [routerLink]="['/customers',customer.id,'update']"><i class="far fa-edit"></i></a>
-        </div>
+      <div class="card-header d-flex justify-content-between">
+        <a href="#" [routerLink]="['/customers']"><i class="fas fa-chevron-left"></i></a>
+        <span>{{((customer.firstName + ' ' + customer.lastName) |titlecase)}}</span>
+        <a href="#" [routerLink]="['/customers',customer.id,'update']"><i class="far fa-edit"></i></a>
       </div>
       <div class="card-body row">
-        <div class="col-6">
+        <div class="col-lg-6 col-12 mb-2">
           <p class="card-text">Email: {{customer.email}}</p>
           <p class="card-text">Phone: {{customer.phone}}</p>
           <p class="card-text">Address: {{customer.address}}</p>
-          <a href="#" routerlink="/customers" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
         </div>
-        <div class="col-6 border">
+        <div class="col-lg-6 col-12">
           <p class="card-text"><u>Notes:</u><br> {{customer.notes}}</p>
         </div>
         <div class="col-12 mt-5" *ngIf="customer.address">
