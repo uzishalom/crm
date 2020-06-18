@@ -6,7 +6,7 @@
     <form #updateCustomerForm="ngForm">
       <div class="row">
         <!-- First Name -->
-        <div class="col-md-6">
+        <div class="col-lg-6 col-12">
           <label for="id_firstName"><span class="text-danger">* </span>First Name</label>
           <br />
           <input id="id_firstName" name="firstName" type="text" minlength="2" required class="form-control"
@@ -15,6 +15,7 @@
               firstNameVar.invalid &&
               (firstNameVar.dirty || firstNameVar.touched)
           }" />
+          <br>
           <!-- First Name Validation -->
           <div *ngIf="
             firstNameVar.invalid && (firstNameVar.dirty || firstNameVar.touched)
@@ -30,7 +31,7 @@
 
         <!-- Last Name  -->
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-12">
           <label for="id_lastName"><span class="text-danger">* </span>Last Name</label>
           <br />
           <input id="id_lastName" name="lastName" type="text" minlength="3" required class="form-control"
@@ -38,6 +39,7 @@
             'is-invalid':
               lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
           }" />
+
           <!-- Last Name Validation -->
           <div *ngIf="
             lastNameVar.invalid && (lastNameVar.dirty || lastNameVar.touched)
@@ -62,6 +64,8 @@
             'is-invalid':
               emailVar.invalid && (emailVar.dirty || emailVar.touched)
           }" />
+          <br>
+
           <!-- Email Validation -->
           <div *ngIf="emailVar.invalid && (emailVar.dirty || emailVar.touched)" class="invalid-feedback">
             <div *ngIf="emailVar.errors.required">
@@ -114,18 +118,17 @@
       </div>
 
       <div class="row mt-3">
-        <div class="col-md-4">
+        <div class="col-12">
           <div class="text-danger" [hidden]="!errorInSaving">There was an error in updating
             {{this.customerInitialFullName | titlecase}} details</div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-12 mb-3">
           <button class="btn btn-primary" [disabled]="updateCustomerForm.invalid" (click)="updateCustomer($event)">
             Save
           </button>
           <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>
         </div>
-        <div class="col-md-4"></div>
       </div>
 
     </form>
