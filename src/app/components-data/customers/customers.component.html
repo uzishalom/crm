@@ -1,53 +1,53 @@
 <app-content-header title="Customers" icon="fas fa-users"></app-content-header>
 
 <div class="row">
-  <div class="col-1"></div>
-  <div class="col-2 input-group">
+  <div class="col-lg-2 col-10 input-group">
     <div class="input-group-prepend">
       <div class="input-group-text"><i class="fas fa-search"></i></div>
     </div>
     <input #nameFilterInput name="nameFilter" class="form-control" type="search" placeholder="Search By Name"
       [(ngModel)]="nameFilter">
   </div>
-  <div class="col-1"></div>
-  <div class="col-2 input-group">
+
+
+  <div class="col-lg-2 col-10 mt-lg-0 mt-2 input-group">
     <div class="input-group-prepend">
       <div class="input-group-text"><i class="fas fa-at"></i></div>
     </div>
     <input #emailFilterInput name="emailFilter" class="form-control" type="search" placeholder="Search By Email"
       [(ngModel)]="emailFilter">
   </div>
-  <div class="col-1"></div>
-  <div class="col-2"></div>
-  <div class="col-1"></div>
-  <div class="col-2">
-    <a routerLink="/customers/add" class="btn btn-primary"><i class="fas fa-user-plus"></i>
+
+  <div class="col-lg-2 col-10 mt-lg-0 mt-2">
+    <a routerLink="/customers/add" class="btn btn-primary w-100"><i class="fas fa-user-plus"></i>
       Add New Customer</a>
   </div>
 </div>
 
 
 <div *ngIf="customers | async as customersAsync;else loading">
-  <table class="table table-bordered mt-5" *ngIf="customersAsync.length;else noCustomers">
+  <table class="table table-responsive-md table-bordered mt-5" *ngIf="customersAsync.length;else noCustomers">
     <thead>
       <tr>
+        <th class="fit"></th>
         <th>Customer Name</th>
         <th>Email</th>
         <th>Phone</th>
-        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <tr
         *ngFor="let customer of (customersAsync |dataFilterTwoFieldsOr:'firstName':'lastName':nameFilter) | dataFilter:'email':emailFilter ">
+        <td class="fit" title="Remove Customer"><a href="#"
+            (click)="deleteCustomer(customer.id,customer.firstName + ' '  + customer.lastName)"><i
+              class="fas fa-user-times btn-link"></i></a>
+        </td>
         <td><a href="#"
             [routerLink]="['/customers',customer.id]">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a>
         </td>
         <td>{{customer.email}}</td>
         <td>{{customer.phone}}</td>
-        <td><a href="#" (click)="deleteCustomer(customer.id,customer.firstName + ' '  + customer.lastName)">Remove</a>
-        </td>
       </tr>
     </tbody>
   </table>
