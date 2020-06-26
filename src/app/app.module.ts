@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { FirstLetterUperCasePipe } from './pipes/first-letter-uper-case.pipe';
 import { PageNotFoundComponent } from './components-general/page-not-found/page-not-found.component';
 import { ContentHeaderComponent } from './components-utils/content-header/content-header.component';
-import { CustomersComponent } from './components-data/customers/customers.component';
+import { CustomersComponent } from './components-data/customers/customers-view/customers.component';
 import { MenubarComponent } from './navigation/menubar/menubar.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { AddCustomerComponent } from './components-data/customers/add-customer/add-customer.component';
@@ -69,4 +69,4 @@ import { UnloggedUserNavigatorComponent } from './components-general/unlogged-us
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

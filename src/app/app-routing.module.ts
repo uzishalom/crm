@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent } from './components-general/page-not-found/page-not-found.component';
-import { CustomersComponent } from './components-data/customers/customers.component';
+import { CustomersComponent } from './components-data/customers/customers-view/customers.component';
 import { AddCustomerComponent } from './components-data/customers/add-customer/add-customer.component';
 import { ContactsComponent } from './components-data/contacts/contacts.component';
 import { ViewCustomerComponent } from './components-data/customers/view-customer/view-customer.component';
@@ -29,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
