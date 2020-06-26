@@ -9,7 +9,8 @@
       </div>
       <div class="card-body row">
         <div class="col-lg-6 col-12 mb-2">
-          <p class="card-text">Email: {{customer.email}}</p>
+          <p class="card-text">Email: <a href="#"
+              [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a></p>
           <p class="card-text">Phone: {{customer.phone}}</p>
           <p class="card-text">Address: {{customer.address}}</p>
         </div>

@@ -46,7 +46,8 @@
         <td><a href="#"
             [routerLink]="['/customers',customer.id]">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a>
         </td>
-        <td>{{customer.email}}</td>
+        <td><a href="#" [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a>
+        </td>
         <td>{{customer.phone}}</td>
       </tr>
     </tbody>

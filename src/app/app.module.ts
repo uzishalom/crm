@@ -29,6 +29,7 @@ import { LoginGoogleDirective } from './directives/loginGoogle.directive';
 import { LogoutDirective } from './directives/logout.directive';
 import { SignupComponent } from './components-general/signup/signup.component';
 import { UnloggedUserNavigatorComponent } from './components-general/unlogged-user-navigator/unlogged-user-navigator.component';
+import { SendEmailComponent } from './components-data/emails/send-email/send-email.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UnloggedUserNavigatorComponent } from './components-general/unlogged-us
     LogoutDirective,
     SignupComponent,
     UnloggedUserNavigatorComponent,
+    SendEmailComponent,
   ],
   imports: [
     BrowserModule,
