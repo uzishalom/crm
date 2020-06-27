@@ -124,7 +124,8 @@
         </div>
 
         <div class="col-12 mb-3">
-          <button class="btn btn-primary" [disabled]="updateCustomerForm.invalid" (click)="updateCustomer($event)">
+          <button class="btn btn-primary" [disabled]="updateCustomerForm.invalid"
+            (click)="updateCustomer(!updateCustomerForm.invalid)">
             Save
           </button>
           <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>

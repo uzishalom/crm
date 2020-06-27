@@ -1,3 +1,4 @@
+import Email from "./email"
 export interface Customer {
   id?: string;
   firstName: string;
@@ -6,5 +7,6 @@ export interface Customer {
   phone: string;
   address?: string;
   notes?: string;
+  receivedEmails?: Email[];
   [key: string]: any;
 }

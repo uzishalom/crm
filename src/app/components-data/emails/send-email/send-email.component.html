@@ -1,2 +1,76 @@
 <app-content-header [title]="'Send Email to  ' + (customerFullName | titlecase) " icon="fas fa-envelope">
 </app-content-header>
+
+<div *ngIf="customer; else loading">
+
+  <div class="container ml-0" *ngIf="customer.id; else noCustomer">
+    <form #sendEmailToCustomerForm="ngForm">
+      <div class="row">
+        <!-- Subject -->
+        <div class="col-12">
+          <label for="id_subject"><span class="text-danger">* </span>Subject</label>
+          <br />
+          <input id="id_subject" name="subject" type="text" minlength="2" required class="form-control"
+            [(ngModel)]="email.subject" #subjectVar="ngModel" [ngClass]="{
+            'is-invalid': subjectVar.invalid && (subjectVar.dirty || subjectVar.touched)}" />
+          <!-- Subject Validation -->
+          <div *ngIf="subjectVar.invalid && (subjectVar.dirty || subjectVar.touched)" class="invalid-feedback">
+            <div *ngIf="subjectVar.errors.required">
+              Please fill the email subject
+            </div>
+            <div *ngIf="subjectVar.errors.minlength">
+              Subject must be at least {{subjectVar.errors.minlength.requiredLength}} characters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Message -->
+        <div class="col-12">
+          <label for="id_message"><span class="text-danger">* </span>Message</label>
+          <br />
+          <textarea id="id_message" name="message" type="text" cols="2000" rows="8" minlength="2" required
+            class="form-control" [(ngModel)]="email.message" #messageVar="ngModel" [ngClass]="{
+            'is-invalid': messageVar.invalid && (messageVar.dirty || messageVar.touched)}"></textarea>
+          <!-- Message Validation -->
+          <div *ngIf="messageVar.invalid && (messageVar.dirty || messageVar.touched)" class="invalid-feedback">
+            <div *ngIf="messageVar.errors.required">
+              Please fill the email message
+            </div>
+            <div *ngIf="messageVar.errors.minlength">
+              Message must be at least {{messageVar.errors.minlength.requiredLength}} characters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <div class="text-danger" [hidden]="!errorInSending">There was an error in sending the email
+            message to {{this.customerFullName | titlecase}}
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <button class="btn btn-primary" [disabled]="sendEmailToCustomerForm.invalid"
+            (click)="sendEmail(!sendEmailToCustomerForm.invalid)">
+            Send
+          </button>
+          <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <ng-template #noCustomer>
+    <h1 class="text-danger text-center mt-5">The customer doesn't exists</h1>
+  </ng-template>
+
+</div>
+
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

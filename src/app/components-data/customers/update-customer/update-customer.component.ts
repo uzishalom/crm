@@ -21,7 +21,7 @@ export class UpdateCustomerComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private customersService: CustomersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.subscription = this.route.params

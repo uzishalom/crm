@@ -53,4 +53,8 @@ export class CustomersService {
   remove(id: string) {
     return this.customersCollectionRef.doc(id).delete();
   }
+
+  updateCustomerEmails(id: string, receivedEmails: Object) {
+    return this.customersCollectionRef.doc(id).update(receivedEmails);
+  }
 }
