@@ -4,12 +4,17 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 import { CustomersService } from './customers.service';
 import { AuthService } from './auth.service';
 
 import { Email } from '../interfaces/email';
 import { Customer } from "../interfaces/customer";
+import { environment } from '../../environments/environment'
+
+
 
 
 @Injectable({
@@ -19,7 +24,7 @@ export class EmailsService {
 
   private emailsCollectionRef: AngularFirestoreCollection<Email> = null;
 
-  constructor(dbRef: AngularFirestore, private customersService: CustomersService, private authService: AuthService) {
+  constructor(dbRef: AngularFirestore, private customersService: CustomersService, private authService: AuthService, private httpTestClient: HttpClient) {
     this.emailsCollectionRef = dbRef.collection('emails');
   }
 
@@ -36,9 +41,14 @@ export class EmailsService {
 
   // ----------------- Private Methods ------------------------------------------
 
-  private send(eamil): Promise<void> {
+  private send(email: Email): Promise<object> {
+    const requestBody = {
+      "email": email.to,
+      "subject": email.subject,
+      "message": email.message
+    }
 
-    return Promise.resolve();
+    return this.httpTestClient.post(environment.sendEmailApiUrl, requestBody).toPromise();
 
   }
 

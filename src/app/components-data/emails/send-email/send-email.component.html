@@ -52,13 +52,15 @@
           </div>
         </div>
 
-        <div class="col-12 mb-3">
+        <div *ngIf="!inSendEmailProcess; else sendingEmail" class="col-12 mb-3">
           <button class="btn btn-primary" [disabled]="sendEmailToCustomerForm.invalid"
             (click)="sendEmail(!sendEmailToCustomerForm.invalid)">
             Send
           </button>
-          <a routerLink="/customers" class="btn btn-secondary ml-2">Cancel</a>
+          <button (click)="this.onCancelSending()" class="btn btn-secondary ml-2">Cancel</button>
         </div>
+
+
       </div>
 
     </form>
@@ -73,4 +75,8 @@
 
 <ng-template #loading>
   <app-loading></app-loading>
+</ng-template>
+
+<ng-template #sendingEmail>
+  <app-loading textToShow="Sending email, please wait"></app-loading>
 </ng-template>
