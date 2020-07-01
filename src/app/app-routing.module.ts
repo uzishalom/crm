@@ -8,6 +8,7 @@ import { ContactsComponent } from './components-data/contacts/contacts.component
 import { ViewCustomerComponent } from './components-data/customers/view-customer/view-customer.component';
 import { UpdateCustomerComponent } from './components-data/customers/update-customer/update-customer.component';
 import { SendEmailComponent } from "./components-data/emails/send-email/send-email.component";
+import { EmailsViewComponent } from "./components-data/emails/emails-view/emails-view.component";
 
 const routes: Routes = [
   { path: '', component: CustomersComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'customers/:id/send-email', component: SendEmailComponent },
   { path: 'customers', component: CustomersComponent },
   { path: 'contacts', component: ContactsComponent },
+  { path: 'emails', component: EmailsViewComponent },
   {
     path: 'page-not-found',
     component: PageNotFoundComponent,

@@ -13,26 +13,10 @@ export const menuItems = [
     link: 'customers',
   },
   {
-    title: 'contacts',
-    icon: 'fas fa-address-book',
-    link: 'contacts',
+    title: 'emails',
+    icon: 'fas fa-mail-bulk',
+    link: 'emails',
   },
-  // {
-  //   title: 'leads',
-  //   icon: 'fas fa-hand-point-up',
-  // },
-  // {
-  //   title: 'reports',
-  //   icon: 'fas fa-flag',
-  // },
-  // {
-  //   title: 'integrations',
-  //   icon: 'fab fa-stack-exchange',
-  // },
-  // {
-  //   title: 'year-end sale',
-  //   icon: 'fas fa-glass-cheers',
-  // },
 ];
 
 /*

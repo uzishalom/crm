@@ -34,7 +34,7 @@ export class EmailsService {
 
   sendEmail(email: Email, customer: Customer) {
     email.sentBy = this.authService.user.email;
-    email.sentOn = new Date();
+    email.sentOn = new Date().toUTCString();
     return this.send(email).then(() => this.add(email, customer));
   }
 

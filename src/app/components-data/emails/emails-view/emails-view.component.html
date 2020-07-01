@@ -1,1 +1,39 @@
-<p>emails-view works!</p>
+<app-content-header title="Sent Emails" icon="fas fa-mail-bulk"></app-content-header>
+
+<div *ngIf="emails | async as emailsAsync;else loading">
+  <table class="table table-responsive-md table-bordered mt-5" *ngIf="emailsAsync.length;else noEmails">
+    <thead>
+      <tr>
+        <th class="fit"></th>
+        <th>Sent on</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Email</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let email of emailsAsync">
+        <td class="fit" title="View Email"><a href="#" (click)="viewEmail()"><i
+              class="far fa-envelope-open text-primary"></i></a>
+        </td>
+        <td>{{email.sentOn}}</td>
+        <td>{{email.sentBy}}</td>
+        <td>{{email.toCustomerName}}</td>
+        <td>{{email.to}}</td>
+        <td>{{email.subject}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noEmails>
+    <h2 class="text-info text-center mt-5">There are no emails to show</h2>
+  </ng-template>
+
+</div>
+
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

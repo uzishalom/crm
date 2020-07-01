@@ -45,6 +45,8 @@ export class SendEmailComponent implements OnInit, OnDestroy {
         this.customer = customer;
         this.customerFullName = this.customer.firstName + ' ' + this.customer.lastName;
         this.email.to = this.customer.email;
+        this.email.toCustomerName = this.customerFullName;
+        this.email.toCustomerId = this.customer.id;
       });
   }
 

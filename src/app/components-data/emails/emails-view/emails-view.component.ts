@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Email } from 'src/app/interfaces/email';
+import { EmailsService } from 'src/app/services/emails.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-emails-view',
   templateUrl: './emails-view.component.html',
   styleUrls: ['./emails-view.component.css']
 })
-export class EmailsViewComponent implements OnInit {
+export class EmailsViewComponent {
+  emails: Observable<Email[]>;
 
-  constructor() { }
+  nameFilter: string;
+  emailFilter: string;
 
-  ngOnInit(): void {
+  constructor(private emailsService: EmailsService) {
+    this.emails = emailsService.getAll();
+  }
+
+  viewEmail() {
+    alert("view email");
+
   }
 
 }
