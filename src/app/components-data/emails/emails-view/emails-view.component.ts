@@ -18,8 +18,14 @@ export class EmailsViewComponent {
     this.emails = emailsService.getAll();
   }
 
-  viewEmail() {
-    alert("view email");
+  switchToMessageView(email: Email) {
+    if (email.isToShowMessage) {
+      email.isToShowMessage = false;
+    }
+    else {
+      email.isToShowMessage = true;
+    }
+
 
   }
 

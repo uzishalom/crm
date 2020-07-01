@@ -15,16 +15,22 @@
 
     <tbody>
       <tr *ngFor="let email of emailsAsync">
-        <td class="fit" title="View Email"><a href="#" (click)="viewEmail()"><i
-              class="far fa-envelope-open text-primary"></i></a>
+        <td *ngIf="(!email.isToShowMessage)" class="fit" title="Show Email Message"><a
+            (click)="switchToMessageView(email)"><i class="far fa-envelope text-primary"></i></a>
         </td>
-        <td>{{email.sentOnString}}</td>
-        <td>{{email.sentBy}}</td>
-        <td><a href="#" [routerLink]="['/customers',email.toCustomerId]">{{email.toCustomerName | titlecase}}</a>
+        <td *ngIf="email.isToShowMessage" class="fit" title="Hide Email Message"><a
+            (click)="switchToMessageView(email)"><i class="far fa-envelope-open text-primary"></i></a>
         </td>
-        <td><a href="#" [routerLink]="['/customers',email.toCustomerId,'send-email']">{{email.to}}</a>
+        <td *ngIf="!email.isToShowMessage">{{email.sentOnString}}</td>
+        <td *ngIf="!email.isToShowMessage">{{email.sentBy}}</td>
+        <td *ngIf="!email.isToShowMessage"><a href="#"
+            [routerLink]="['/customers',email.toCustomerId]">{{email.toCustomerName | titlecase}}</a>
         </td>
-        <td>{{email.subject}}</td>
+        <td *ngIf="!email.isToShowMessage"><a href="#"
+            [routerLink]="['/customers',email.toCustomerId,'send-email']">{{email.to}}</a>
+        </td>
+        <td *ngIf="!email.isToShowMessage">{{email.subject}}</td>
+        <td *ngIf="email.isToShowMessage" colspan="5"><u>Email Message:</u><br>{{email.message}}</td>
       </tr>
     </tbody>
   </table>
