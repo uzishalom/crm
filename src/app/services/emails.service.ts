@@ -4,6 +4,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -28,13 +29,15 @@ export class EmailsService {
     this.emailsCollectionRef = dbRef.collection('emails');
   }
 
+
   getAll(): Observable<Email[]> {
-    return this.emailsCollectionRef.valueChanges({ idField: 'id' });
+    return this.emailsCollectionRef.valueChanges({ idField: 'id' }).pipe(map(emails => emails.sort(this.sortEmailsDesc)));
   }
 
   sendEmail(email: Email, customer: Customer) {
     email.sentBy = this.authService.user.email;
-    email.sentOn = new Date().toUTCString();
+    email.sentOnString = new Date().toUTCString();
+    email.sentOnDate = new Date();
     return this.send(email).then(() => this.add(email, customer));
   }
 
@@ -60,4 +63,13 @@ export class EmailsService {
     let updatedCustomerReceivedEmails = "receivedEmails" in customer ? { receivedEmails: [email, ...customer.receivedEmails] } : { receivedEmails: [email] };
     return this.customersService.updateCustomerEmails(customer.id, updatedCustomerReceivedEmails);
   }
+
+  private sortEmailsDesc(emailA, emailB) {
+    if (emailA.sentOnDate > emailB.sentOnDate)
+      return -1;
+    if (emailA.sentOnDate < emailB.sentOnDate)
+      return 1;
+    return 0;
+  };
+
 }

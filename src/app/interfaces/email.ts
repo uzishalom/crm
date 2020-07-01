@@ -4,8 +4,9 @@ export interface Email {
   toCustomerId?: string;
   subject: string;
   message: string;
-  sentOn?: string;
-  sentBy?: string; // the id of the user who sent the email.
+  sentOnDate?: Date;
+  sentOnString?: string;
+  sentBy?: string;
   [key: string]: any;
 }
 

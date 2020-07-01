@@ -18,10 +18,12 @@
         <td class="fit" title="View Email"><a href="#" (click)="viewEmail()"><i
               class="far fa-envelope-open text-primary"></i></a>
         </td>
-        <td>{{email.sentOn}}</td>
+        <td>{{email.sentOnString}}</td>
         <td>{{email.sentBy}}</td>
-        <td>{{email.toCustomerName}}</td>
-        <td>{{email.to}}</td>
+        <td><a href="#" [routerLink]="['/customers',email.toCustomerId]">{{email.toCustomerName | titlecase}}</a>
+        </td>
+        <td><a href="#" [routerLink]="['/customers',email.toCustomerId,'send-email']">{{email.to}}</a>
+        </td>
         <td>{{email.subject}}</td>
       </tr>
     </tbody>
