@@ -1,0 +1,43 @@
+<app-content-header [title]="'Emails That Were Sent To ' + (customerFullName | titlecase)" icon="fas fa-mail-bulk">
+</app-content-header>
+
+<div *ngIf="emails;else loading">
+  <div>
+    <a class="text-primary" (click)="back()">Back</a>
+  </div>
+  <table class="table table-responsive-md table-bordered mt-5" *ngIf="emails.length;else noEmails">
+    <thead>
+      <tr>
+        <th class="fit"></th>
+        <th>Sent on</th>
+        <th>From</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let email of emails">
+        <td *ngIf="(!email.isToShowMessage)" class="fit" title="Show Email Message"><a
+            (click)="switchToMessageView(email)"><i class="far fa-envelope text-primary"></i></a>
+        </td>
+        <td *ngIf="email.isToShowMessage" class="fit" title="Hide Email Message"><a
+            (click)="switchToMessageView(email)"><i class="far fa-envelope-open text-primary"></i></a>
+        </td>
+        <td *ngIf="!email.isToShowMessage">{{email.sentOnString}}</td>
+        <td *ngIf="!email.isToShowMessage">{{email.sentBy}}</td>
+        <td *ngIf="!email.isToShowMessage">{{email.subject}}</td>
+        <td *ngIf="email.isToShowMessage" colspan="5"><u>Email Message:</u><br>{{email.message}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noEmails>
+    <h2 class="text-info text-center mt-5">There are no emails to show</h2>
+  </ng-template>
+
+</div>
+
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

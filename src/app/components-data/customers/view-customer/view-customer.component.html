@@ -10,8 +10,12 @@
       <div class="card-body row">
         <div class="col-lg-6 col-12 mb-2">
           <p class="card-text">Email: <a href="#"
-              [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a></p>
-          <p class="card-text">Phone: {{customer.phone}}</p>
+              [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a>
+            <a [routerLink]="['/customers',customer.id,'sent-emails']" class="ml-3"><i
+                class="fas fa-mail-bulk text-primary pointer" title="Sent Emails"></i></a>
+          </p>
+          <p class="card-text">Phone: {{customer.phone}}
+          </p>
           <p class="card-text">Address: {{customer.address}}</p>
         </div>
         <div class="col-lg-6 col-12">

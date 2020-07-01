@@ -39,14 +39,16 @@
     <tbody>
       <tr
         *ngFor="let customer of (customersAsync |dataFilterTwoFieldsOr:'firstName':'lastName':nameFilter) | dataFilter:'email':emailFilter ">
-        <td class="fit" title="Remove Customer"><a href="#"
+        <td class="fit" title="Remove Customer"><a
             (click)="deleteCustomer(customer.id,customer.firstName + ' '  + customer.lastName)"><i
               class="fas fa-user-times btn-link"></i></a>
         </td>
-        <td><a href="#"
+        <td><a
             [routerLink]="['/customers',customer.id]">{{(customer.firstName + " " + customer.lastName) | titlecase}}</a>
         </td>
-        <td><a href="#" [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a>
+        <td><a [routerLink]="['/customers',customer.id,'send-email']">{{customer.email}}</a> <a
+            [routerLink]="['/customers',customer.id,'sent-emails']" class="float-right"><i
+              class="fas fa-mail-bulk text-primary pointer" title="Sent Emails"></i></a>
         </td>
         <td>{{customer.phone}}</td>
       </tr>

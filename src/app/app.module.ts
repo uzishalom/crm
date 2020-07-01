@@ -31,7 +31,7 @@ import { SignupComponent } from './components-general/signup/signup.component';
 import { UnloggedUserNavigatorComponent } from './components-general/unlogged-user-navigator/unlogged-user-navigator.component';
 import { SendEmailComponent } from './components-data/emails/send-email/send-email.component';
 import { EmailsViewComponent } from './components-data/emails/emails-view/emails-view.component';
-import { CustomerEmailViewComponent } from './components-data/emails/customer-email-view/customer-email-view.component';
+import { CustomerEmailsViewComponent } from './components-data/emails/customer-emails-view/customer-emails-view.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { CustomerEmailViewComponent } from './components-data/emails/customer-em
     UnloggedUserNavigatorComponent,
     SendEmailComponent,
     EmailsViewComponent,
-    CustomerEmailViewComponent,
+    CustomerEmailsViewComponent,
   ],
   imports: [
     BrowserModule,

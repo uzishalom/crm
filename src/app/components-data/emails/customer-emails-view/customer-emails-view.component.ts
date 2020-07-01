@@ -1,17 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Email } from 'src/app/interfaces/email';
 import { CustomersService } from 'src/app/services/customers.service';
 import { switchMap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-customer-email-view',
-  templateUrl: './customer-email-view.component.html',
-  styleUrls: ['./customer-email-view.component.css']
+  selector: 'app-customer-emails-view',
+  templateUrl: './customer-emails-view.component.html',
+  styleUrls: ['./customer-emails-view.component.css']
 })
-export class CustomerEmailViewComponent implements OnInit {
+export class CustomerEmailsViewComponent implements OnInit {
   emails: Email[];
   customerFullName: string = '';
   subscription: Subscription;
@@ -19,7 +19,8 @@ export class CustomerEmailViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private customersService: CustomersService
+    private customersService: CustomersService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +35,17 @@ export class CustomerEmailViewComponent implements OnInit {
       });
   }
 
-  viewEmail() {
+  switchToMessageView(email: Email) {
+    if (email.isToShowMessage) {
+      email.isToShowMessage = false;
+    }
+    else {
+      email.isToShowMessage = true;
+    }
+  }
+
+  back() {
+    this.location.back();
 
   }
 }
