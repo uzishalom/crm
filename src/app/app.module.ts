@@ -30,6 +30,7 @@ import { LogoutDirective } from './directives/logout.directive';
 import { SignupComponent } from './components-general/signup/signup.component';
 import { UnloggedUserNavigatorComponent } from './components-general/unlogged-user-navigator/unlogged-user-navigator.component';
 import { SendEmailComponent } from './components-data/emails/send-email/send-email.component';
+import { EmailsViewComponent } from './components-data/emails/emails-view/emails-view.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { SendEmailComponent } from './components-data/emails/send-email/send-ema
     SignupComponent,
     UnloggedUserNavigatorComponent,
     SendEmailComponent,
+    EmailsViewComponent,
   ],
   imports: [
     BrowserModule,
