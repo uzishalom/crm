@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { switchMap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2'
 
 import { Customer } from 'src/app/interfaces/customer';
 import { Email } from 'src/app/interfaces/email';
@@ -66,7 +67,11 @@ export class SendEmailComponent implements OnInit, OnDestroy {
   onSuccessEmailSending() {
     this.inSendEmailProcess = false;
     this.location.back();
-    alert("Email was sent successfully");
+    Swal.fire(
+      'Success',
+      'Email was sent successfully',
+      'success'
+    )
   }
 
   onCancelSending() {
